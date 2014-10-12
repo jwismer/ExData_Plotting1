@@ -10,7 +10,8 @@ if (!file.exists(filename)) {
 
 #conditionally load the training and test datasets
 if (!exists("hpc_data")) {
-    hpc_data <- read.table("./household_power_consumption.txt", header=TRUE, sep=";", quote="\"")
+    hpc_data <- read.table("./household_power_consumption.txt", header=TRUE, sep=";", 
+                           quote="\"", na.strings="?")
 }
 hpc_data$Date<-as.Date(hpc_data$Date, format="%d/%m/%Y")
 
@@ -25,7 +26,7 @@ hpc_trim$DateTime <- strptime(hpc_trim$DateTime, "%Y-%m-%d %H:%M:%S")
 hpc_trim$Global_active_power <- as.numeric(as.character(hpc_trim$Global_active_power))
 
 #generate the plot
-png(file = "plot2.png", bg = "transparent")
+png(file = "plot2.png", bg = "white")
 plot(hpc_trim$DateTime, hpc_trim$Global_active_power, 
      type="l", xlab="", ylab="Global Active Power (kilowatts)")
 dev.off()
