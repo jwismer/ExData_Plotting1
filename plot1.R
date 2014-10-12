@@ -23,6 +23,8 @@ hpc_trim$Global_active_power <- as.numeric(as.character(hpc_trim$Global_active_p
 
 png(file = "plot1.png", bg = "white")
 #create histogram
-hist(hpc_trim$Global_active_power, col="red", main="Global Active Power",
-     xlab="Global Active Power (kilowatts)", ylab="Frequency", xlim=c(0,6), ylim = c(0, 1200))
+hist(hpc_trim$Global_active_power, col="red", main="Global Active Power", 
+     axes=F, xlab="Global Active Power (kilowatts)")
+axis(side=1, at=c(0,2,4,6))
+axis(side=2, at=c(0,200,400,600,800,1000,1200))
 dev.off()
