@@ -8,7 +8,7 @@ if (!file.exists(filename)) {
     unzip(filename, exdir=".")
 }
 
-#conditionally load the training and test datasets
+#conditionally load the dataset
 if (!exists("hpc_data")) {
     hpc_data <- read.table("./household_power_consumption.txt", header=TRUE, sep=";", 
                            quote="\"", na.strings="?")
